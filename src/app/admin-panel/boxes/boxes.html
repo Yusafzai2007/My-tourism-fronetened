@@ -1,0 +1,124 @@
+<div class="flex flex-col md:flex-row items-center justify-between px-6 py-4">
+  <h1 class="text-3xl font-bold text-gray-800 mb-4 md:mb-0">Fiesta Travel Tourism</h1>
+
+  <div class="flex items-center gap-2">
+    <label class="text-sm font-medium text-gray-700">Filter by Month:</label>
+    <select
+      class="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    >
+      <option value="">All Months</option>
+      <option *ngFor="let year of Year" [value]="year">{{ year }}</option>
+    </select>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 px-6 py-4">
+  <!-- Card 1: Total Products -->
+  <article
+    class="rounded-2xl bg-white p-6 shadow-xl shadow-black/5 ring-1 ring-slate-200/60 flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105"
+  >
+    <div>
+      <p class="text-sm text-slate-600">Total Products</p>
+      <div class="mt-1.5 flex items-baseline gap-2">
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">{{ dep }}</p>
+      </div>
+    </div>
+    <div class="shrink-0">
+      <div
+        class="h-14 w-14 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 ring-1 ring-white/20 shadow-inner flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:from-indigo-500 group-hover:to-blue-500"
+      >
+        <i
+          class="fas fa-box-open text-2xl text-white transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
+        ></i>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2: Total Cities -->
+  <article
+    class="rounded-2xl bg-white p-6 shadow-xl shadow-black/5 ring-1 ring-slate-200/60 flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105"
+  >
+    <div>
+      <p class="text-sm text-slate-600">Total Cities</p>
+      <div class="mt-1.5 flex items-baseline gap-2">
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">{{ cities }}</p>
+      </div>
+    </div>
+    <div class="shrink-0">
+      <div
+        class="h-14 w-14 rounded-xl bg-gradient-to-br from-green-500 to-teal-600 ring-1 ring-white/20 shadow-inner flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:from-teal-500 group-hover:to-green-500"
+      >
+        <i
+          class="fas fa-city text-2xl text-white transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110"
+        ></i>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3: Total Users -->
+  <article
+    class="rounded-2xl bg-white p-6 shadow-xl shadow-black/5 ring-1 ring-slate-200/60 flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105"
+  >
+    <div>
+      <p class="text-sm text-slate-600">Total Users</p>
+      <div class="mt-1.5 flex items-baseline gap-2">
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">{{ users }}</p>
+      </div>
+    </div>
+    <div class="shrink-0">
+      <div
+        class="h-14 w-14 rounded-xl bg-gradient-to-br from-purple-500 to-fuchsia-600 ring-1 ring-white/20 shadow-inner flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:from-fuchsia-500 group-hover:to-purple-500"
+      >
+        <i
+          class="fas fa-users text-2xl text-white transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
+        ></i>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4: Total Orders -->
+  <article
+    class="rounded-2xl bg-white p-6 shadow-xl shadow-black/5 ring-1 ring-slate-200/60 flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105"
+  >
+    <div>
+      <p class="text-sm text-slate-600">Total Orders</p>
+      <div class="mt-1.5 flex items-baseline gap-2">
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
+          {{ totalOrders }}
+        </p>
+      </div>
+    </div>
+    <div class="shrink-0">
+      <div
+        class="h-14 w-14 rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 ring-1 ring-white/20 shadow-inner flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:from-pink-500 group-hover:to-rose-500"
+      >
+        <i
+          class="fas fa-shopping-cart text-2xl text-white transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110"
+        ></i>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5: Total Payment -->
+  <article
+    class="rounded-2xl bg-white p-6 shadow-xl shadow-black/5 ring-1 ring-slate-200/60 flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105"
+  >
+    <div>
+      <p class="text-sm text-slate-600">Total Payment</p>
+      <div class="mt-1.5 flex items-baseline gap-2">
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
+          {{ totalpricedata }}
+        </p>
+      </div>
+    </div>
+    <div class="shrink-0">
+      <div
+        class="h-14 w-14 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-600 ring-1 ring-white/20 shadow-inner flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:from-orange-500 group-hover:to-yellow-500"
+      >
+        <i
+          class="fa-solid fa-money-bill-1-wave text-2xl text-white transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
+        ></i>
+      </div>
+    </div>
+  </article>
+</div>

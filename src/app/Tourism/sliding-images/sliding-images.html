@@ -1,0 +1,17 @@
+
+
+
+<div class="carousel overflow-hidden relative w-full " id="img">
+  <div class="carousel-track flex animate-scroll gap-4">
+    <ng-container *ngFor="let product of dep" class="">
+      <img
+        *ngIf="product.thumbnailimage && product.thumbnailimage.length > 0"
+        [src]="product.thumbnailimage[0]"
+        [alt]="product.city?.cityName || 'Tour Image'"
+        [routerLink]="['/product-deails',product._id]"
+        class="w-[400px] h-[300px] object-cover rounded-xl shadow-md cursor-pointer"
+      />
+    </ng-container>
+
+   
+</div>

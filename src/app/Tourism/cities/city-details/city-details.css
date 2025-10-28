@@ -1,0 +1,36 @@
+img {
+  image-rendering: auto;
+  -webkit-optimize-contrast: auto;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+body::-webkit-scrollbar {
+        width: 12px;
+        padding: 10px;
+      }
+
+
+      body::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      
+      body.light-mode::-webkit-scrollbar-thumb {
+        background-color: #1975d1;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+      }
+
+      
+      body.dark-mode::-webkit-scrollbar-thumb {
+        background-color: #1e293b;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+      }
+      
+ 

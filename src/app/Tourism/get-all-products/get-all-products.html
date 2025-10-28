@@ -1,0 +1,71 @@
+<div class="mt-5">
+  <div class="flex space-x-4 justify-center items-center">
+    <div class="mt-1">
+      <i class="fa-solid fa-bullhorn text-xl text-[rgb(0,64,48)]"></i>
+      <h1 class="border-b-2 border-[rgb(9,87,63)]"></h1>
+    </div>
+    <div>
+      <h1 class="font-bold text-2xl text-[rgb(9,87,63)]">Our Services</h1>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-screen-2xl mx-auto p-5 sm:p-10 md:p-16">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <!-- CARD 1 -->
+    <div class="rounded overflow-hidden shadow-lg flex flex-col" *ngFor="let city of orders">
+      <a href="#"></a>
+      <div class="relative">
+        <a href="#">
+          <img class="w-full" [src]="city.thumbnailimage[1]" alt="Sunset in the mountains" />
+          <div
+            class="bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 hover:bg-gray-900 opacity-25"
+          ></div>
+        </a>
+        <a href="#!">
+          <div
+            class="text-xs absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-gray-800 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out"
+          >
+            {{ city.discountpercentage }}% off
+          </div>
+        </a>
+      </div>
+      <div class="px-6 py-4 mb-auto">
+        <a
+          href="#"
+          class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2"
+        >
+          <p class="line-clamp-1">
+            {{ city.producttitle }}
+          </p>
+        </a>
+        <p class="text-gray-500 text-sm line-clamp-2">
+          {{ city.productdescription }}
+        </p>
+      </div>
+      <div class="flex items-center justify-around ">
+        <div class="flex items-center space-x-2">
+          <div class="flex items-center text-amber-500">
+            <h1>Tour Tourism</h1>
+          </div>
+        </div>
+
+        <div class="flex items-baseline">
+          <span class="text-slate-400 text-xs line-through mr-1"
+            >PKR:{{ city.discountedtotalprice }}</span
+          >
+          <span class="text-sm font-bold text-slate-900">PKR:{{ city.adultbaseprice }}</span>
+        </div>
+      </div>
+      <a href="" [routerLink]="['/product-deails', city._id]">
+        <div class="px-6 py-3 flex flex-row items-center justify-between">
+          <button
+            class="w-full py-3 bg-gradient-to-r from-blue-600 to-gray-800 hover:from-blue-700 hover:to-indigo-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-md"
+          >
+            Book Now
+          </button>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

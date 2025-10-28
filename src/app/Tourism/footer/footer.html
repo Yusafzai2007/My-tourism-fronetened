@@ -1,0 +1,189 @@
+<footer class="relative bg-gradient-to-r from-blue-600 to-gray-800 text-slate-200 antialiased font-[Inter]">
+  <!-- Decorative plane icon -->
+  <div class="pointer-events-none absolute left-4 top-10 hidden md:block opacity-70">
+    <div class="h-12 w-12 rounded-full bg-teal-800/60 flex items-center justify-center ring-1 ring-white/10">
+      <i data-lucide="plane" class="h-6 w-6 text-cyan-300"></i>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-6 pt-14 md:pt-20">
+    <!-- Newsletter header + form -->
+    <div class="grid grid-cols-1 items-center gap-8 md:grid-cols-12">
+      <div class="md:col-span-7">
+        <h1 class="text-4xl leading-tight tracking-tight sm:text-5xl md:text-6xl font-semibold text-white">
+          Get Updated The Latest<br class="hidden sm:block" />
+          Newsletter
+        </h1>
+      </div>
+      <div class="md:col-span-5">
+        <form class="w-full" (ngSubmit)="onSubmit()">
+          <div class="flex items-center gap-3">
+            <div class="flex-1">
+              <label for="email" class="sr-only">Email</label>
+              <input
+                id="email"
+                type="email"
+                [(ngModel)]="email"
+                name="email"
+                placeholder="Enter Email"
+                class="w-full rounded-full bg-teal-800/40 px-6 py-4 text-slate-100 placeholder-slate-300 outline-none ring-1 ring-slate-400/30 focus:ring-2 focus:ring-cyan-400/70 transition"
+              />
+            </div>
+            <button
+              type="submit"
+              class="shrink-0 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 px-6 py-4 text-teal-950 font-medium hover:from-cyan-300 hover:to-sky-400 transition focus:outline-none focus:ring-2 focus:ring-cyan-300/60"
+            >
+              Subscribe Now
+              <i data-lucide="send" class="h-5 w-5"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-10 border-t border-white/10"></div>
+
+    <!-- Footer content -->
+    <div class="grid grid-cols-1 gap-10 py-12 md:grid-cols-12">
+      <!-- Brand -->
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900 flex items-center justify-center ring-1 ring-white/10">
+  <i class="fa-solid fa-globe text-cyan-300"></i>
+</div>
+
+          <div>
+            <div class="text-xl font-semibold tracking-tight text-white">Tourm</div>
+            <div class="text-xs text-slate-300">Explore World</div>
+          </div>
+        </div>
+        <p class="mt-4 text-sm leading-6 text-slate-300 max-w-md">
+          Rapidiously myocardinate cross-platform intellectual capital model. Appropriately
+          create interactive infrastructures
+        </p>
+        <div class="mt-5 flex items-center gap-3">
+  <a
+    href="#"
+    class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900  flex items-center justify-center ring-1 ring-white/10 hover:ring-cyan-400/60 transition"
+    aria-label="Facebook"
+  >
+    <i class="fab fa-facebook-f text-white"></i>
+  </a>
+  <a
+    href="#"
+    class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900 flex items-center justify-center ring-1 ring-white/10 hover:ring-cyan-400/60 transition"
+    aria-label="X"
+  >
+    <i class="fab fa-twitter text-white"></i>
+  </a>
+  <a
+    href="#"
+    class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900 flex items-center justify-center ring-1 ring-white/10 hover:ring-cyan-400/60 transition"
+    aria-label="LinkedIn"
+  >
+    <i class="fab fa-linkedin-in text-white"></i>
+  </a>
+  <a
+    href="#"
+    class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900 flex items-center justify-center ring-1 ring-white/10 hover:ring-cyan-400/60 transition"
+    aria-label="YouTube"
+  >
+    <i class="fab fa-youtube text-white"></i>
+  </a>
+  <a
+    href="#"
+    class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900 flex items-center justify-center ring-1 ring-white/10 hover:ring-cyan-400/60 transition"
+    aria-label="Instagram"
+  >
+    <i class="fab fa-instagram text-white"></i>
+  </a>
+</div>
+      </div>
+
+      <!-- Useful Links -->
+      <div class="md:col-span-3">
+        <h3 class="text-lg font-semibold tracking-tight text-white">Useful Link</h3>
+        <ul class="mt-5 space-y-3 text-slate-300">
+          <li *ngFor="let link of ['Home', 'About Us', 'Our Services', 'Terms of Service', 'Tour Booking Now']">
+            <a class="group inline-flex items-center gap-2 hover:text-white transition" href="#">
+              <i data-lucide="chevron-right" class="h-4 w-4 text-cyan-300 group-hover:translate-x-0.5 transition"></i>
+              {{ link }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Get in Touch -->
+     <div class="md:col-span-3">
+  <h3 class="text-lg font-semibold tracking-tight text-white">Get In Touch</h3>
+  <ul class="mt-5 space-y-4">
+    <!-- Phone -->
+    <li class="flex items-start gap-3">
+      <div class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900 flex items-center justify-center ring-1 ring-white/10">
+        <i class="fa-solid fa-phone text-cyan-300"></i>
+      </div>
+      <div class="text-slate-300 text-sm leading-6">
+        +01 234 567 890<br />+09 876 543 210
+      </div>
+    </li>
+
+    <!-- Email -->
+    <li class="flex items-start gap-3">
+      <div class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900 flex items-center justify-center ring-1 ring-white/10">
+        <i class="fa-solid fa-envelope text-cyan-300"></i>
+      </div>
+      <div class="text-slate-300 text-sm leading-6">
+        mailinfo00@realar.com<br />support24@realar.com
+      </div>
+    </li>
+
+    <!-- Address -->
+    <li class="flex items-start gap-3">
+      <div class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-gray-900 flex items-center justify-center ring-1 ring-white/10">
+        <i class="fa-solid fa-map-marker-alt text-cyan-300"></i>
+      </div>
+      <div class="text-slate-300 text-sm leading-6 max-w-xs">
+        789 Inner Lane, Holy park,<br />California, USA
+      </div>
+    </li>
+  </ul>
+</div>
+
+      <!-- Instagram -->
+      <div class="md:col-span-2">
+        <h3 class="text-lg font-semibold tracking-tight text-white">Instagram Post</h3>
+        <div class="mt-5 grid grid-cols-4 gap-3">
+          <img
+            *ngFor="let img of [
+              'https://images.unsplash.com/photo-1501785888041-af3ef285b470',
+              'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
+              'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429',
+              'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
+              'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429',
+              'https://images.unsplash.com/photo-1501785888041-af3ef285b470'
+            ]"
+            [src]="img + '?q=80&w=400&auto=format&fit=crop'"
+            alt="travel"
+            class="aspect-square rounded-md object-cover ring-1 ring-white/10"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10 bg-teal-950/40">
+    <div class="mx-auto max-w-7xl px-6 py-5 flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <p class="text-sm text-slate-300">Copyright © 2024 Tourm, All rights reserved.</p>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  <button
+    (click)="scrollToTop()"
+    class="fixed bottom-6 right-6 z-20 h-12 w-12 rounded-full bg-cyan-500 text-teal-950 shadow-lg hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-300/60 flex items-center justify-center"
+  >
+    <i data-lucide="arrow-up" class="h-5 w-5"></i>
+  </button>
+</footer>

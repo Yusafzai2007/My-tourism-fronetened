@@ -1,0 +1,169 @@
+<div class="grid place-content-center justify-start my-10 mx-12">
+  <div class="mt-7 w-full flex flex-col bg-white rounded-lg p-4 shadow-sm">
+    <h2
+      class="text-gradient-to-r from-blue-600 to-gray-800 font-bold text-2xl text-center md:text-left mx-6"
+    >
+      Personal Information
+    </h2>
+
+    <form (ngSubmit)="submit()">
+      <!-- Row 1 -->
+      <div class="mt-4 mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div>
+          <label class="text-[#060840] text-xl" for="first_name">First Name</label>
+          <input
+            [(ngModel)]="paymentdata.first_name"
+            name="first_name"
+            placeholder="First Name"
+            class="w-full bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="first_name"
+            type="text"
+          />
+        </div>
+        <div>
+          <label class="text-[#060840] text-xl" for="last_name">Last Name</label>
+          <input
+            [(ngModel)]="paymentdata.last_name"
+            name="last_name"
+            placeholder="Last Name"
+            class="w-full bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="last_name"
+            type="text"
+          />
+        </div>
+        <div>
+          <label class="text-[#060840] text-xl" for="address">Address</label>
+          <input
+            [(ngModel)]="paymentdata.address"
+            name="address"
+            placeholder="Your Address"
+            class="w-full bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="address"
+            type="text"
+          />
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="mt-4 mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div>
+          <label class="text-[#060840] text-xl" for="paymentMethod">Payment Method</label>
+          <select
+            [(ngModel)]="paymentdata.payment_Method"
+            name="payment_Method"
+            class="w-full bg-white border border-gray-300 text-gray-700 rounded-md px-2 py-1"
+          >
+            <option value="">Select a payment method</option>
+            <option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[#060840] text-xl" for="city">City</label>
+          <input
+            [(ngModel)]="paymentdata.city"
+            name="city"
+            placeholder="Your City"
+            class="w-full bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="city"
+            type="text"
+          />
+        </div>
+        <div>
+          <label class="text-[#060840] text-xl" for="state">State</label>
+          <input
+            [(ngModel)]="paymentdata.state"
+            name="state"
+            placeholder="Your State"
+            class="w-full bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="state"
+            type="text"
+          />
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="mt-4 mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div>
+          <label class="text-[#060840] text-xl" for="name_on_card">Name on Card</label>
+          <input
+            [(ngModel)]="paymentdata.name_On_Card"
+            name="name_On_Card"
+            placeholder="Jon Smith"
+            class="w-full bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="name_on_card"
+            type="text"
+          />
+        </div>
+        <div>
+          <label class="text-[#060840] text-xl" for="card_number">Card Number</label>
+          <input
+            [(ngModel)]="paymentdata.card_Number"
+            name="card_Number"
+            placeholder="1234 1234 1234"
+            class="w-full bg-white border border-gray-300 text-gray-700 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="card_number"
+            type="text"
+          />
+        </div>
+        <div>
+          <label class="text-[#060840] text-xl" for="zip">ZIP</label>
+          <input
+            [(ngModel)]="paymentdata.zip"
+            name="zip"
+            placeholder="Your ZIP code"
+            class="w-full bg-white border border-gray-300 text-gray-700 rounded-md px-2 py-1"
+            id="zip"
+            type="text"
+          />
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="mt-4 mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div>
+          <label class="text-[#060840] text-xl" for="country">Country</label>
+          <select
+            [(ngModel)]="paymentdata.country"
+            name="country"
+            class="w-full bg-white border border-gray-300 text-gray-700 rounded-md px-2 py-1"
+          >
+            <option value="">Select a country</option>
+            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[#060840] text-xl" for="expiry">Expiry</label>
+          <input
+            [(ngModel)]="paymentdata.expiry"
+            name="expiry"
+            placeholder="MM / YY"
+            class="w-full bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="expiry"
+            type="text"
+          />
+        </div>
+        <div>
+          <label class="text-[#060840] text-xl" for="cvv">CVV</label>
+          <input
+            [(ngModel)]="paymentdata.cvv"
+            name="cvv"
+            placeholder="•••"
+            class="w-full bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1 focus:ring-[#060840] focus:border-[#060840]"
+            id="cvv"
+            type="password"
+          />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="mt-4 flex justify-center">
+        <button
+          type="submit"
+          class="w-[95%] bg-gradient-to-r from-blue-600 to-gray-800 text-white rounded-md px-8 py-2 hover:bg-gradient-to-r from-blue-500 to-gray-900 hover:text-white transition-all duration-200"
+        >
+          Complete Booking
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

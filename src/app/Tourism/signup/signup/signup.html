@@ -1,0 +1,81 @@
+<div
+  class="relative min-h-screen w-full flex items-center justify-center bg-cover bg-center"
+  style="
+    background-image: url('https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/647632ead6899f001d77295a.jpg');
+  "
+>
+  <div
+    class="bg-black/80 backdrop-blur-md p-8 rounded-2xl shadow-xl w-96 text-white border border-pink-800"
+  >
+    <h2 class="text-2xl font-semibold text-center mb-6 text-pink-500">Sign Up</h2>
+
+    <form (ngSubmit)="submit()">
+      <!-- Username -->
+      <div class="mb-4">
+        <label for="username" class="block text-sm mb-2">Username</label>
+        <input
+          [(ngModel)]="signupdata.userName"
+          name="userName"
+          type="text"
+          id="username"
+          placeholder="Enter your username"
+          class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-700"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="mb-4">
+        <label for="email" class="block text-sm mb-2">Email</label>
+        <input
+          [(ngModel)]="signupdata.email"
+          name="email"
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-700"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label for="password" class="block text-sm mb-2">Password</label>
+        <input
+          [(ngModel)]="signupdata.password"
+          name="password"
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-700"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-pink-700 hover:bg-pink-800 text-white font-semibold py-2 rounded-lg transition-all duration-300"
+      >
+        Sign Up
+      </button>
+
+      <p class="text-sm text-center mt-4 text-gray-400">
+        Already have an account?
+        <a href="#" class="text-pink-500 hover:underline" routerLink="/login">Login here</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

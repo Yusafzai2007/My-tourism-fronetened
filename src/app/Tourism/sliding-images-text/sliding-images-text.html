@@ -1,0 +1,315 @@
+
+<div
+  *ngIf="isModalOpen"
+  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 backdrop-blur-sm"
+>
+  <div
+    class="bg-white rounded-3xl shadow-2xl w-11/12 md:w-1/2 lg:w-1/3 p-8 relative transform transition-all duration-300 scale-100 hover:scale-[1.01]"
+  >
+    <button
+      (click)="closeModal()"
+      class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition"
+    >
+      ✕
+    </button>
+
+    <h2 class="text-3xl font-extrabold text-blue-700 mb-6 text-center">
+      Book Tour: {{ selectedProduct?.producttitle }}
+    </h2>
+
+    <form class="space-y-5" (ngSubmit)="bookNow()">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Date</label>
+          <input
+            [(ngModel)]="bookingdata.order_date"
+            type="date"
+            name="order_date"
+            class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+          />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Adults</label>
+          <input
+            [(ngModel)]="bookingdata.adult_no"
+            type="number"
+            name="adult_no"
+            placeholder="Number of Adults"
+            class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Children</label>
+          <input
+            [(ngModel)]="bookingdata.child_no"
+            type="number"
+            name="child_no"
+            placeholder="Number of Children"
+            class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+          />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Total</label>
+          <input
+            [(ngModel)]="bookingdata.total"
+            name="total"
+            type="text"
+            placeholder="Total Price"
+            class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Tour Type</label>
+        <input
+          [(ngModel)]="bookingdata.transport_type"
+          type="text"
+          name="transport_type"
+          placeholder="Tour Type"
+          class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+        />
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 mt-6">
+        <button
+          type="submit"
+          class="flex-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:from-blue-600 hover:to-blue-800 transition-all duration-300"
+        >
+          Confirm Booking
+        </button>
+
+        <button
+          *ngIf="selectedProduct?.Isprivate"
+          type="button"
+          (click)="openPrivateModal()"
+          class="flex-1 bg-gradient-to-r from-sky-500 to-sky-700 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:from-sky-600 hover:to-sky-800 transition-all duration-300"
+        >
+          Private Book
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div
+  *ngIf="isPrivateModalOpen"
+  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 backdrop-blur-sm"
+>
+  <div
+    class="bg-white rounded-3xl shadow-2xl w-11/12 md:w-1/2 lg:w-1/3 p-8 relative transform transition-all duration-300 scale-100 hover:scale-[1.01]"
+  >
+    <button
+      (click)="closePrivateModal()"
+      class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition"
+    >
+      ✕
+    </button>
+
+    <h2 class="text-3xl font-extrabold text-blue-700 mb-6 text-center">
+      Private Tour Booking
+    </h2>
+
+    <form class="space-y-5" (ngSubmit)="bookNow()">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Date</label>
+          <input
+            [(ngModel)]="bookingdata.order_date"
+            type="date"
+            name="private_order_date"
+            class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+          />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Private Adults</label>
+          <input
+            [(ngModel)]="bookingdata.private_adult_no"
+            type="number"
+            name="private_adult_no"
+            placeholder="Number of Adults"
+            class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Private Children</label>
+          <input
+            [(ngModel)]="bookingdata.private_child_no"
+            type="number"
+            name="private_child_no"
+            placeholder="Number of Children"
+            class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+          />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Total</label>
+          <input
+            [(ngModel)]="bookingdata.total"
+            name="private_total"
+            type="text"
+            placeholder="Total Price"
+            class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Private Transport Type</label>
+        <input
+          [(ngModel)]="bookingdata.private_transport_type"
+          type="text"
+          name="private_transport_type"
+          placeholder="Transport Type"
+          class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full mt-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:from-blue-600 hover:to-blue-800 transition-all duration-300"
+      >
+        Confirm Private Booking
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 px-4 sm:px-6 lg:px-8 py-8">
+  <main class="max-w-7xl mx-auto">
+    <section class="bg-white rounded-2xl shadow-xl overflow-hidden mb-10">
+      <div class="px-6 sm:px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+        <h1 class="text-2xl sm:text-3xl font-bold">{{dep[0]?.producttitle}}</h1>
+        <p class="text-blue-100 mt-2">Leak-proof universal fit • BPA-free</p>
+      </div>
+
+      <div class="grid grid-cols-12 gap-6 p-6">
+        <div class="order-2 md:order-1 col-span-12 md:col-span-3">
+          <div class="md:hidden mt-3 -mx-1">
+            <div id="thumbs-mobile" class="flex gap-2 overflow-x-auto px-1 pb-1"></div>
+          </div>
+          <div class="hidden md:block">
+            <div
+              id="thumbs-desktop"
+              class="flex flex-col gap-4 overflow-y-auto md:max-h-[550px] pr-2 scrollbar-thin scrollbar-thumb-gray-300"
+            ></div>
+          </div>
+        </div>
+
+        <div class="order-1 md:order-2 col-span-12 md:col-span-9 relative">
+          <div class="relative bg-gray-50 rounded-xl overflow-hidden border border-gray-200">
+            <div class="absolute top-4 left-4 z-20">
+              <span
+                class="inline-flex items-center rounded-full bg-red-500 text-white px-3 py-1 text-xs font-medium shadow-md"
+              >
+                LAST ITEM AVAILABLE
+              </span>
+            </div>
+
+            <div class="absolute top-4 right-4 z-20 flex items-center gap-2">
+              <button
+                id="expandBtn"
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-sm hover:shadow-md transition-all"
+              >
+                <i class="fa-solid fa-up-right-and-down-left-from-center text-gray-700"></i>
+              </button>
+              <button
+                id="likeBtn"
+                aria-pressed="false"
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-sm hover:shadow-md transition-all"
+              >
+                <i class="fa-regular fa-heart text-gray-700"></i>
+              </button>
+            </div>
+
+            <div class="relative">
+              <div class="aspect-[4/3] md:aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-200"></div>
+              <img
+                id="mainImage"
+                alt="Product image"
+                class="absolute inset-0 w-full h-full object-cover rounded-xl transition duration-300"
+                src=""
+              />
+
+              <button
+                id="prevBtn"
+                class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-sm hover:shadow-md transition-all items-center justify-center"
+              >
+                <i class="fa-solid fa-chevron-left text-gray-800"></i>
+              </button>
+              <button
+                id="nextBtn"
+                class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-sm hover:shadow-md transition-all items-center justify-center"
+              >
+                <i class="fa-solid fa-chevron-right text-gray-800"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid gap-8">
+      <div
+        *ngFor="let product of dep; let pi = index"
+        class="p-6 border rounded-2xl shadow-lg bg-white hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex flex-col md:flex-row items-start gap-6">
+          <div class="w-full md:w-2/3 p-6 rounded-xl bg-gradient-to-br from-slate-50 to-blue-50 border border-blue-100">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">
+              {{ product.producttitle }}
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-700">
+              <p><strong class="text-blue-700">Tour Service:</strong> {{ product.tourservice }}</p>
+              <p><strong class="text-blue-700">Transport:</strong> {{ product.transportService }}</p>
+              <p><strong class="text-blue-700">Pickup:</strong> {{ product.pickup }}</p>
+              <p><strong class="text-blue-700">Languages:</strong> {{ product.translatelanguages }}</p>
+              <p><strong class="text-blue-700">Free WiFi:</strong> {{ product.wifi }}</p>
+              <p><strong class="text-blue-700">Adult Price:</strong> {{ product.adultbaseprice }}</p>
+              <p><strong class="text-blue-700">Child Price:</strong> {{ product.childbaseprice }}</p>
+            </div>
+
+            <button
+              (click)="openModal(product)"
+              class="mt-6 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 shadow-md w-full sm:w-auto"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="lightbox" class="fixed inset-0 z-50 hidden">
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+      <div class="absolute inset-0 flex items-center justify-center p-4">
+        <div class="relative w-full max-w-5xl">
+          <button
+            id="closeLightbox"
+            class="absolute -top-12 right-0 md:top-0 md:-right-12 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-lg hover:bg-gray-100 transition"
+          >
+            <i class="fa-solid fa-xmark text-gray-800"></i>
+          </button>
+          <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+            <div class="aspect-[16/10] bg-gray-50 relative">
+              <img
+                id="lightboxImage"
+                alt="Enlarged image"
+                class="absolute inset-0 w-full h-full object-contain rounded-2xl transition duration-300"
+                src=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

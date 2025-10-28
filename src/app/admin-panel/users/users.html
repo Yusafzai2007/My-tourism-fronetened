@@ -1,0 +1,114 @@
+<body>
+  <div class="max-w-4xl w-full bg-white rounded-xl shadow-xl overflow-hidden mt-36">
+    <div class="bg-gray-900 p-6 text-white">
+      <h1 class="text-2xl font-bold flex items-center">
+        <i class="fas fa-users mr-3"></i>
+        User Management System
+      </h1>
+      <p class="mt-2 opacity-90">View and manage all registered users</p>
+    </div>
+
+    <div class="p-6">
+      <!-- Input Fields Only -->
+      <div class="flex space-x-4 mb-4">
+        <input
+          type="text"
+          [(ngModel)]="searchUsers"
+          (input)="fillterusers()"
+          placeholder="User Name"
+          name="userName"
+          class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+        <input
+          [(ngModel)]="searchUsers"
+          (input)="fillterusers()"
+          type="text"
+          placeholder="Email"
+          name="email"
+          class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+      </div>
+
+      <div class="overflow-x-auto rounded-lg border border-gray-200">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                <i class="fas fa-user mr-2"></i>User Name
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                <i class="fas fa-envelope mr-2"></i>Email Address
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                <i class="fas fa-cog mr-2"></i>Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr
+              class="hover:bg-blue-50 transition-colors duration-200"
+              *ngFor="let user of filterusers"
+            >
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div
+                    class="flex-shrink-0 h-10 w-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold"
+                  >
+                    JS
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">{{ user.userName }}</div>
+                    <div class="text-sm text-gray-500">Administrator</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">{{ user.email }}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <button class="text-red-600 hover:text-red-900" (click)="deleteuserdata(user._id)">
+                  <i class="fas fa-trash-alt"></i> Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+     <div class="mt-6 flex items-center justify-between">
+  <div class="text-sm text-gray-700">
+    Showing
+    <span class="font-medium">{{ (currentPage-1)*pageSize + 1 }}</span> to
+<span class="font-medium">{{ getEndIndex() }}</span>
+    of <span class="font-medium">{{ users.length }}</span> users
+  </div>
+  <div class="flex space-x-2">
+    <button
+      class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+      [disabled]="currentPage === 1"
+      (click)="prevPage()"
+    >
+      Previous
+    </button>
+    <button
+      class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700"
+      [disabled]="currentPage === totalPages"
+      (click)="nextPage()"
+    >
+      Next
+    </button>
+  </div>
+</div>
+
+    </div>
+  </div>
+</body>

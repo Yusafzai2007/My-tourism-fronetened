@@ -1,0 +1,65 @@
+<main>
+  <section class="relative overflow-hidden">
+    <!-- Subtle atmosphere -->
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(14,165,233,0.10),transparent_45%)]"
+    ></div>
+
+    <div class="pointer-events-none absolute -top-16 -left-8 opacity-40">
+      <div class="flex items-center gap-6">
+        <i data-lucide="plane" class="w-8 h-8 text-cyan-400"></i>
+        <i data-lucide="globe-2" class="w-7 h-7 text-cyan-300"></i>
+        <i data-lucide="map" class="w-6 h-6 text-cyan-300"></i>
+      </div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-6 sm:px-8 py-16 sm:py-20 lg:py-24">
+      <!-- Optional heading -->
+      <div class="mb-10 sm:mb-14 text-center sm:text-left">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900">
+          By the numbers
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-zinc-600">
+          A quick snapshot of experience and trust.
+        </p>
+      </div>
+
+      <!-- Circles Grid -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10 md:gap-12 place-items-center"
+      >
+        <!-- 1 -->
+        <div class="relative group" *ngFor="let stat of stats">
+          <div
+            class="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full ring-1 ring-cyan-300/80 p-3 transition-transform duration-300 ease-out group-hover:scale-[1.02] group-hover:ring-cyan-400"
+          >
+            <div
+              class="w-full h-full rounded-full ring-[18px] ring-white/70 bg-cyan-50/70 flex items-center justify-center text-center shadow-[inset_0_10px_28px_rgba(14,165,233,0.10)]"
+            >
+              <div class="px-6">
+                <div
+                  class="text-4xl sm:text-5xl font-semibold tracking-tight text-zinc-900 tabular-nums"
+                >
+                  <span class="counter" [attr.data-target]="stat.value" [attr.data-suffix]="stat.suffix" [attr.data-compact]="stat.compact" [attr.data-duration]="stat.duration">0</span>
+                </div>
+                <div class="mt-2 text-base sm:text-lg font-medium text-zinc-600">
+                  {{ stat.label }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Accent dots -->
+            <span
+              *ngIf="stat.dotPosition === 'bottom'"
+              class="absolute -right-1.5 bottom-6 w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_0_6px_rgba(186,230,253,0.7)]"
+            ></span>
+            <span
+              *ngIf="stat.dotPosition === 'top'"
+              class="absolute top-3 right-8 w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_0_6px_rgba(186,230,253,0.7)]"
+            ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

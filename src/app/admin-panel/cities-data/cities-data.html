@@ -1,0 +1,223 @@
+<!-- component -->
+<body class="antialiased font-sans bg-gray-200 mt-16">
+  <div class="container mx-auto px-4 sm:px-8">
+    <div class="py-8">
+      <div>
+        <h2 class="text-2xl font-semibold leading-tight">Cities</h2>
+      </div>
+      <div class="my-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div class="flex flex-col sm:flex-row gap-2">
+          <!-- Rows per page -->
+          <select
+            class="rounded border border-gray-400 bg-white text-gray-700 py-2 px-4 focus:outline-none focus:border-gray-500"
+          >
+            <option>5</option>
+            <option>10</option>
+            <option>20</option>
+          </select>
+
+          <!-- Status -->
+        <!-- Status -->
+<select
+  class="rounded border border-gray-400 bg-white text-gray-700 py-2 px-4 focus:outline-none focus:border-gray-500"
+  [(ngModel)]="filtercity"
+  (change)="filterdata()"
+>
+  <option value="All">All</option>
+  <option value="Active">Active</option>
+  <option value="Inactive">Inactive</option>
+</select>
+
+        </div>
+
+        <!-- Search box -->
+        <div class="relative w-full sm:w-1/3">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
+              <path
+                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
+              ></path>
+            </svg>
+          </span>
+          <input
+          [(ngModel)]="serchitem"
+          (input)="filterdata()"
+            placeholder="Search"
+            class="border border-gray-400 rounded pl-8 pr-3 py-2 w-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
+          />
+        </div>
+
+        <!-- Add Product Button -->
+        <app-add-cities></app-add-cities>
+
+      </div>
+
+      <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+          <table class="min-w-full leading-normal">
+            <thead>
+              <tr>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-left text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                >
+                  Cities
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-left text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                >
+                  Rol
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-left text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                >
+                  Created at
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-left text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                >
+                  Status
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-left text-xs font-semibold text-gray-100 uppercase tracking-wider"
+                >
+                  EDIT
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let city of filtercities">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 w-10 h-10">
+                      <img class="w-full h-full rounded-full" [src]="city.cityImage" alt="" />
+                    </div>
+                    <div class="ml-3">
+                      <p class="text-gray-900 whitespace-no-wrap">
+                        {{ city.cityName }}
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p class="text-gray-900 whitespace-no-wrap w-36 line-clamp-1">
+                    {{ city.cityDescription }}
+                  </p>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p class="text-gray-900 whitespace-no-wrap">
+                    {{ city.createdAt | date : 'hh:mm a' }}
+                  </p>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <span
+                    class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+                  >
+                    <span
+                      aria-hidden
+                      class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                    ></span>
+                    <span class="relative">{{ city.status }}</span>
+                  </span>
+                </td>
+                <td class="px-7 py-5 border-b border-gray-200 bg-white text-sm">
+                  <button
+                    class="text-blue-500 hover:text-blue-700 transition duration-200"
+                    title="Edit"
+                  >
+                    <i class="fa-solid fa-pen-to-square text-lg"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div
+  class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
+>
+  <!-- Showing X to Y of Z Entries -->
+  <span class="text-xs xs:text-sm text-gray-900">
+    Showing
+    <span class="font-medium">{{ (currentPage - 1) * pageSize + 1 }}</span>
+    to
+    <span class="font-medium">{{ getEndIndex() }}</span>
+    of
+    <span class="font-medium">{{ filtercities.length }}</span>
+    Entries
+  </span>
+
+  <!-- Pagination Buttons -->
+  <div class="inline-flex mt-2 xs:mt-0">
+    <button
+      class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l"
+      [disabled]="currentPage === 1"
+      (click)="prevPage()"
+    >
+      Prev
+    </button>
+    <button
+      class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r"
+      [disabled]="currentPage === totalPages"
+      (click)="nextPage()"
+    >
+      Next
+    </button>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
