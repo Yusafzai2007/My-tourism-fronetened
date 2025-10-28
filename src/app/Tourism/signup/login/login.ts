@@ -15,7 +15,7 @@ export class Login {
   constructor(private dep: Tourism, private route: Router) {}
 
   logindata = {
-    email: 'ali@example.com',
+    email: 'yusafzai2007@gmail.com',
     password: '123',
   };
 
@@ -23,13 +23,13 @@ export class Login {
     console.log(this.logindata);
 
     this.dep.login(this.logindata).subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         console.log(res);
-            if (res.tourism.role === 'admin') {
-              this.route.navigateByUrl('/admin')
-            }else{
-              this.route.navigateByUrl('')
-            }
+        if (res.tourism.role === 'admin') {
+          this.route.navigateByUrl('/admin');
+        } else {
+          this.route.navigateByUrl('');
+        }
       },
       error: (err) => {
         console.log(err);

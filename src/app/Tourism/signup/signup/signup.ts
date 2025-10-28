@@ -27,8 +27,8 @@ export class Signup {
   this.dep.signup(this.signupdata).subscribe({
     next:(res)=>{
           console.log(res);
-    alert("signup successfully")
-    // this.route.navigateByUrl("login")
+    // alert("signup successfully")
+    this.route.navigateByUrl("login")
     },
     error:(err)=>{
         console.error('Signup Failed:', err);
