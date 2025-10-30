@@ -18,6 +18,7 @@ import { Users } from './admin-panel/users/users';
 import { AddProdcts } from './admin-panel/add-prodcts/add-prodcts';
 import { SafariTable } from './admin-panel/safari-table/safari-table';
 import { EditProducts } from './admin-panel/edit-products/edit-products';
+import { AddAdmin } from './admin-panel/add-admin/add-admin';
 
 export const routes: Routes = [
   {
@@ -88,6 +89,10 @@ export const routes: Routes = [
       {
         path: 'edit-product/:id',
         component: EditProducts,
+      },
+      {
+        path: 'Add-admin',
+        component: AddAdmin,
       },
     ],
   },

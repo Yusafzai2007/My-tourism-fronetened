@@ -17,6 +17,7 @@ export class Orders implements OnInit {
 
   constructor(private service: Admin) {}
 
+  
   ngOnInit(): void {
     this.ordersdata();
   }

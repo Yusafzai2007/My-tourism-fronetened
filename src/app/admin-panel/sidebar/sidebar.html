@@ -1,4 +1,5 @@
 <!-- ✅ Navbar -->
+<!-- ✅ Navbar -->
 <nav
   class="fixed top-0 left-0 w-full bg-gray-900 px-6 py-5 flex justify-between items-center z-50 border-b border-white border-b-2"
 >
@@ -8,21 +9,56 @@
     <span class="tracking-wide">FiestaTourism</span>
   </div>
 
-  <!-- 🔍 Center: Search Bar (Desktop Only) -->
-  <div class="hidden lg:flex flex-1 justify-center px-6">
+  <!-- 🔍 Center: Search Bar -->
+  <div class="hidden lg:flex flex-1 justify-center px-6 relative">
     <div class="relative w-[60%]">
       <input
+        (keyup)="searchproduct($event)"
         type="text"
-        placeholder="Search destinations, tours, or guides..."
+        placeholder="Search products by title..."
         class="w-full bg-gray-800 text-white py-2 px-5 pr-10 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
       />
       <i
         class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
       ></i>
+
+      <!-- 🔽 Search Results Dropdown -->
+      <div
+        *ngIf="seachdata.length > 0"
+        class="absolute left-0 mt-2 w-full bg-gray-900 rounded-lg shadow-lg border border-gray-700 max-h-80 overflow-y-auto z-[9999]"
+      >
+        <ul>
+          <li
+            *ngFor="let item of seachdata"
+            class="flex items-center gap-3 p-3 hover:bg-gray-800 cursor-pointer border-b border-gray-800 last:border-none"
+          >
+            <a href="" [routerLink]="['/product-deails', item._id]" class="flex items-center gap-3 p-3 hover:bg-gray-800 cursor-pointer border-b border-gray-800 last:border-none">
+              <!-- 🖼 Thumbnail -->
+              <img
+                [src]="
+                  item.thumbnailimage && item.thumbnailimage.length > 0
+                    ? item.thumbnailimage[0]
+                    : 'https://via.placeholder.com/60'
+                "
+                alt="thumbnail"
+                class="w-14 h-14 object-cover rounded-lg border border-gray-700"
+              />
+
+              <!-- 📝 Info -->
+              <div class="flex flex-col">
+                <p class="text-white font-semibold text-sm">{{ item.producttitle }}</p>
+                <p class="text-gray-400 text-xs line-clamp-2">
+                  {{ item.productdescription }}
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- 👤 Right: Static Profile Info (Desktop Only) -->
+  <!-- 👤 Right: Static Profile Info -->
   <div class="hidden lg:flex items-center space-x-4 text-white">
     <img
       src="https://i.pravatar.cc/40"
@@ -30,8 +66,8 @@
       class="w-9 h-9 rounded-full border border-white"
     />
     <div>
-      <p class="font-semibold">Yousaf Zai</p>
-      <p class="text-sm text-gray-300">yousaf@example.com</p>
+      <p class="font-semibold">Yusafzai</p>
+      <p class="text-sm text-gray-300">yusafzai@gmail.com</p>
     </div>
   </div>
 
@@ -133,6 +169,15 @@
               <span [class.hidden]="!isSidebarOpen && !isMobileView">Add-Safari</span>
             </a>
           </li>
+          <li>
+            <a
+              routerLink="/admin/Add-admin"
+              class="flex items-center hover:bg-gray-700 rounded py-2"
+            >
+              <i class="fas fa-plus-circle text-white mr-2"></i>
+              <span [class.hidden]="!isSidebarOpen && !isMobileView">Add-Admin</span>
+            </a>
+          </li>
         </ul>
       </details>
     </li>
@@ -147,16 +192,16 @@
         <span [class.hidden]="!isSidebarOpen && !isMobileView">Users</span>
       </a>
     </li>
-      <li>
-            <a
-              routerLink="Boxes"
-              class="flex items-center hover:bg-gray-700 rounded px-3 py-2"
-              routerLink="/admin/safari-table"
-            >
-              <i class="fas fa-binoculars text-white mr-2"></i>
-              <span [class.hidden]="!isSidebarOpen && !isMobileView">Safari</span>
-            </a>
-          </li>
+    <li>
+      <a
+        routerLink="Boxes"
+        class="flex items-center hover:bg-gray-700 rounded px-3 py-2"
+        routerLink="/admin/safari-table"
+      >
+        <i class="fas fa-binoculars text-white mr-2"></i>
+        <span [class.hidden]="!isSidebarOpen && !isMobileView">Safari</span>
+      </a>
+    </li>
   </ul>
 
   <!-- ✅ Log Out Button -->

@@ -15,7 +15,7 @@ export class Users implements OnInit {
   users: signupdatauser[] = [];
   filterusers: signupdatauser[] = [];
   searchUsers: string = '';
-
+   rowpaerpage:string='All'
   // Pagination
   currentPage: number = 1;
   pageSize: number = 5; // Number of users per page
@@ -35,17 +35,26 @@ export class Users implements OnInit {
     });
   }
 
-  fillterusers() {
-    const term = this.searchUsers.toLowerCase();
-    const filtered = this.users.filter(
-      (user) =>
-        user.userName.toLowerCase().includes(term) ||
-        user.email.toLowerCase().includes(term)
-    );
-    this.totalPages = Math.ceil(filtered.length / this.pageSize);
-    this.currentPage = 1;
-    this.updateFilterUsers(filtered);
+fillterusers() {
+  const term = this.searchUsers.toLowerCase();
+
+  let filtered = this.users.filter(
+    (user) =>
+      user.userName?.toLowerCase().includes(term) ||
+      user.email?.toLowerCase().includes(term) ||
+      user.role?.toLowerCase().includes(term)
+  );
+
+  // 🔹 Filter by role if dropdown is not "All"
+  if (this.rowpaerpage !== 'All') {
+    filtered = filtered.filter((user) => user.role === this.rowpaerpage);
   }
+
+  this.totalPages = Math.ceil(filtered.length / this.pageSize);
+  this.currentPage = 1;
+  this.updateFilterUsers(filtered);
+}
+
 
   updateFilterUsers(filteredList?: signupdatauser[]) {
     const list = filteredList || this.users;

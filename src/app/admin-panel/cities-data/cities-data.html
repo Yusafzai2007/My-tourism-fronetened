@@ -17,17 +17,16 @@
           </select>
 
           <!-- Status -->
-        <!-- Status -->
-<select
-  class="rounded border border-gray-400 bg-white text-gray-700 py-2 px-4 focus:outline-none focus:border-gray-500"
-  [(ngModel)]="filtercity"
-  (change)="filterdata()"
->
-  <option value="All">All</option>
-  <option value="Active">Active</option>
-  <option value="Inactive">Inactive</option>
-</select>
-
+          <!-- Status -->
+          <select
+            class="rounded border border-gray-400 bg-white text-gray-700 py-2 px-4 focus:outline-none focus:border-gray-500"
+            [(ngModel)]="filtercity"
+            (change)="filterdata()"
+          >
+            <option value="All">All</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
         </div>
 
         <!-- Search box -->
@@ -40,8 +39,8 @@
             </svg>
           </span>
           <input
-          [(ngModel)]="serchitem"
-          (input)="filterdata()"
+            [(ngModel)]="serchitem"
+            (input)="filterdata()"
             placeholder="Search"
             class="border border-gray-400 rounded pl-8 pr-3 py-2 w-full text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
           />
@@ -49,7 +48,6 @@
 
         <!-- Add Product Button -->
         <app-add-cities></app-add-cities>
-
       </div>
 
       <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -131,93 +129,39 @@
             </tbody>
           </table>
           <div
-  class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
->
-  <!-- Showing X to Y of Z Entries -->
-  <span class="text-xs xs:text-sm text-gray-900">
-    Showing
-    <span class="font-medium">{{ (currentPage - 1) * pageSize + 1 }}</span>
-    to
-    <span class="font-medium">{{ getEndIndex() }}</span>
-    of
-    <span class="font-medium">{{ filtercities.length }}</span>
-    Entries
-  </span>
+            class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
+          >
+            <!-- Showing X to Y of Z Entries -->
+            <span class="text-xs xs:text-sm text-gray-900">
+              Showing
+              <span class="font-medium">{{ (currentPage - 1) * pageSize + 1 }}</span>
+              to
+              <span class="font-medium">{{ getEndIndex() }}</span>
+              of
+              <span class="font-medium">{{ filtercities.length }}</span>
+              Entries
+            </span>
 
-  <!-- Pagination Buttons -->
-  <div class="inline-flex mt-2 xs:mt-0">
-    <button
-      class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l"
-      [disabled]="currentPage === 1"
-      (click)="prevPage()"
-    >
-      Prev
-    </button>
-    <button
-      class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r"
-      [disabled]="currentPage === totalPages"
-      (click)="nextPage()"
-    >
-      Next
-    </button>
-  </div>
-</div>
-
+            <!-- Pagination Buttons -->
+            <div class="inline-flex mt-2 xs:mt-0">
+              <button
+                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l"
+                [disabled]="currentPage === 1"
+                (click)="prevPage()"
+              >
+                Prev
+              </button>
+              <button
+                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r"
+                [disabled]="currentPage === totalPages"
+                (click)="nextPage()"
+              >
+                Next
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

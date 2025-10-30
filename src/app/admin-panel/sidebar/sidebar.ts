@@ -4,11 +4,15 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Tourism } from '../../services/tourism';
 import { tourismResponse, User } from '../../Interface/city';
 import { FormsModule } from '@angular/forms';
+import { Admin } from '../admin-services/admin';
+import { signupdata, singindata } from '../../Interface/signup';
+import { UserResponse } from '../../Interface/add-admin';
+import { productResponsedata, tourismproduct } from '../../Interface/products';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet, FormsModule,RouterLink],
+  imports: [CommonModule, RouterLink, RouterOutlet, FormsModule, RouterLink],
   templateUrl: './sidebar.html',
   styleUrls: ['./sidebar.css'],
 })
@@ -23,7 +27,7 @@ export class Sidebar implements OnInit {
     this.checkScreen();
   }
 
-  constructor(private service: Tourism, private route: Router) {
+  constructor(private service: Tourism, private route: Router, private serviceadmin: Admin) {
     this.checkScreen();
   }
 
@@ -67,4 +71,27 @@ export class Sidebar implements OnInit {
       this.citiesdata = res.tourism;
     });
   }
+
+  seachdata: productResponsedata[] = [];
+
+searchproduct(event: KeyboardEvent) {
+  const input = event.target as HTMLInputElement;
+  const value = input.value.trim();
+
+  if (value.length > 0) {
+    this.serviceadmin.search_product(value).subscribe({
+      next: (res: tourismproduct) => {
+        // API returns all products, so filter by title (case-insensitive)
+        this.seachdata = res.tourism.Product.filter((item) =>
+          item.producttitle.toLowerCase().includes(value.toLowerCase())
+        );
+      },
+      error: (err) => console.log(err),
+    });
+  } else {
+    this.seachdata = []; // clear results
+  }
+}
+
+
 }

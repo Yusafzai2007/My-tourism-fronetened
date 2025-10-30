@@ -5,6 +5,7 @@ import { tourismResponse } from '../../Interface/city';
 import { signupdata, singindata } from '../../Interface/signup';
 import { deleteuser } from '../../Interface/delet-user';
 import { productResponsedata, tourismproduct } from '../../Interface/products';
+import { UserResponse } from '../../Interface/add-admin';
 
 @Injectable({
   providedIn: 'root',
@@ -58,12 +59,27 @@ export class Admin {
     return this.http.post('http://localhost:4000/api/v1/tourism/product', formdata);
   }
 
-  delete_product(id:string) {
+  delete_product(id: string) {
     return this.http.delete(`http://localhost:4000/api/v1/tourism/delete-products/${id}`);
   }
 
-update_product(id: string, updatedata: tourismproduct) {
-  return this.http.put(`http://localhost:4000/api/v1/tourism/update-product/${id}`, updatedata);
+  update_product(id: string, updatedata: tourismproduct) {
+    return this.http.put(`http://localhost:4000/api/v1/tourism/update-product/${id}`, updatedata);
+  }
+
+  Admin(admin: signupdata) {
+    return this.http.post('http://localhost:4000/api/v1/tourism/add_Admin', admin);
+  }
+
+  current_user() {
+    return this.http.get<singindata>('http://localhost:4000/api/v1/tourism/currentuser');
+  }
+
+search_product(query: string = "") {
+  return this.http.get<tourismproduct>(
+    `http://localhost:4000/api/v1/tourism/get-products?search=${query}`
+  );
 }
+
 
 }
