@@ -1,17 +1,104 @@
+<!-- Main Container -->
+<div class="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 min-h-[60vh] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
+  
+  <!-- Header Section -->
+  <div class="text-center mb-12 max-w-4xl mx-auto">
+    <!-- Icon Badge -->
+    <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-lg px-6 py-3 rounded-2xl shadow-2xl mb-8 border border-white/30">
+      <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+      </svg>
+      <span class="text-white font-semibold text-sm uppercase tracking-widest">Explore Beautiful Pakistan</span>
+    </div>
+    
+    <!-- Main Title -->
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+      Discover <span class="bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">Amazing Tours</span>
+    </h1>
+    
+    <!-- Description -->
+    <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed mb-8">
+      Journey through Pakistan's most breathtaking landscapes. From majestic mountains to ancient cities, 
+      experience unforgettable adventures with our curated tour packages.
+    </p>
+    
+    <!-- Stats Section -->
+    <div class="flex flex-wrap justify-center gap-6 md:gap-12 mt-10">
+      <div class="text-center">
+        <div class="text-2xl md:text-3xl font-bold text-white">50+</div>
+        <div class="text-blue-200 text-sm font-medium">Tour Packages</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl md:text-3xl font-bold text-white">25+</div>
+        <div class="text-blue-200 text-sm font-medium">Cities</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl md:text-3xl font-bold text-white">4.8★</div>
+        <div class="text-blue-200 text-sm font-medium">Rating</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl md:text-3xl font-bold text-white">1000+</div>
+        <div class="text-blue-200 text-sm font-medium">Travelers</div>
+      </div>
+    </div>
+  </div>
 
-
-
-<div class="carousel overflow-hidden relative w-full " id="img">
-  <div class="carousel-track flex animate-scroll gap-4">
-    <ng-container *ngFor="let product of dep" class="">
-      <img
-        *ngIf="product.thumbnailimage && product.thumbnailimage.length > 0"
-        [src]="product.thumbnailimage[0]"
-        [alt]="product.city?.cityName || 'Tour Image'"
-        [routerLink]="['/product-deails',product._id]"
-        class="w-[400px] h-[300px] object-cover rounded-xl shadow-md cursor-pointer"
-      />
-    </ng-container>
-
-   
+  <!-- Carousel Section -->
+  <div class="w-full max-w-8xl mx-auto">
+    <div class="carousel overflow-hidden relative w-full rounded-3xl bg-white/10 backdrop-blur-lg p-6 shadow-2xl border border-white/20">
+      <div class="carousel-track flex gap-6 animate-scroll">
+        <ng-container *ngFor="let product of dep">
+          <div class="relative group flex-shrink-0 cursor-pointer" *ngIf="product.thumbnailimage && product.thumbnailimage.length > 0">
+                  <a href="" [routerLink]="['/product-deails', product._id]">
+            <img
+              [src]="product.thumbnailimage[0]"
+              [alt]="product.city?.cityName || 'Tour Image'"
+              [routerLink]="['/product-deails',product._id]"
+              class="w-[220px] h-[250px] md:w-[260px] md:h-[270px] object-cover rounded-2xl shadow-lg cursor-pointer transform group-hover:scale-110 transition-all duration-500 group-hover:shadow-2xl border-2 border-white/30"
+            />
+            </a>
+            <!-- Overlay with city name -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-4">
+              <div class="text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <h3 class="font-bold text-sm md:text-base">{{ product.city?.cityName || 'Explore Tour' }}</h3>
+                <p class="text-xs text-gray-200 mt-1">Click to discover</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+/* Custom animations for the carousel */
+.carousel-track {
+  animation: scroll 25s linear infinite;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-220px * 6 - 6rem));
+  }
+}
+
+/* Responsive animations */
+@media (min-width: 768px) {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-260px * 6 - 6rem));
+    }
+  }
+}
+</style>

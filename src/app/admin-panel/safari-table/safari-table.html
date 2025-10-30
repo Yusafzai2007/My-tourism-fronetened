@@ -1,6 +1,6 @@
 <!-- component -->
 <body class="antialiased font-sans bg-gray-200 mt-16">
-  <div class="container mx-auto px-4 sm:px-8">
+  <div class="container max-w-[90vw] px-4 sm:px-8">
     <div class="py-8 px-4 sm:px-8">
       <!-- Title -->
       <div class="mb-6">
@@ -62,147 +62,194 @@
       </div>
     </div>
 
-    <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-      <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-        <table class="min-w-full leading-normal">
-          <thead>
-            <tr>
-              <th
-                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-left text-xs font-semibold text-gray-100 uppercase tracking-wider"
-                *ngFor="let data of table"
-              >
-                {{ data }}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let safari of filterproduct">
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <a href="" [routerLink]="['/product-deails', safari._id]">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 w-10 h-10">
-                      <img
-                        class="w-full h-full rounded-full"
-                        [src]="safari.thumbnailimage[0]"
-                        alt=""
-                      />
-                    </div>
-                    <div class="ml-3">
-                      <p class="text-gray-900 whitespace-no-wrap w-20 line-clamp-1">
-                        {{ safari.producttitle }}
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap w-36 line-clamp-1">
-                  {{ safari.city.cityName }}
-                </p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">
-                  {{ safari.category }}
-                </p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">
-                  {{ safari.adultbaseprice }}
-                </p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">
-                  {{ safari.childbaseprice }}
-                </p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">{{ safari.discountpercentage }}%</p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">{{ safari.discountedtotalprice }}%</p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">
-                  {{ safari.transportService }}
-                </p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">
-                  {{ safari.tourservice }}
-                </p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">
-                  {{ safari.translatelanguages }}
-                </p>
-              </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <span
-                  class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="bg-gradient-to-r from-gray-800 to-gray-900">
+                <th
+                  class="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider"
+                  *ngFor="let data of table"
                 >
-                  <span
-                    aria-hidden
-                    class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                  ></span>
-                  <span class="relative">{{ safari.Isprivate }}</span>
-                </span>
-              </td>
-              <td class="px-7 py-5 border-b border-gray-200 bg-white text-sm">
-                <button
-                  class="text-blue-500 hover:text-blue-700 transition duration-200"
-                  title="Edit"
-                >
-                  <a [routerLink]="['/admin/edit-product', safari._id]">
-                    <i class="fa-solid fa-pen-to-square text-lg"></i>
+                  {{ data }}
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr *ngFor="let safari of filterproduct" class="hover:bg-gray-50 transition-colors duration-200">
+                <!-- Product Title with Image -->
+                <td class="px-6 py-4">
+                  <a href="" [routerLink]="['/product-deails', safari._id]" class="group">
+                    <div class="flex items-center">
+                      <div class="flex-shrink-0 w-12 h-12">
+                        <img
+                          class="w-12 h-12 rounded-xl border-2 border-gray-200 object-cover group-hover:scale-105 transition-transform duration-200"
+                          [src]="safari.thumbnailimage[0]"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-200 line-clamp-1 max-w-32">
+                          {{ safari.producttitle }}
+                        </p>
+                      </div>
+                    </div>
                   </a>
-                </button>
-              </td>
-              <td class="px-7 py-5 border-b border-gray-200 bg-white text-sm">
-                <button
-                  (click)="deleteProduct(safari._id)"
-                  class="text-red-500 hover:text-blue-700 transition duration-200"
-                  title="delete"
-                >
-                  <i class="fa-solid fa-trash text-lg"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div
-  class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
->
-  <!-- Showing X to Y of Z Entries -->
-  <span class="text-xs xs:text-sm text-gray-900">
-    Showing
-    <span class="font-medium">{{ (currentPage - 1) * pageSize + 1 }}</span>
-    to
-    <span class="font-medium">{{ getEndIndex() }}</span>
-    of
-    <span class="font-medium">{{ filterproduct.length }}</span>
-    Entries
+                </td>
+
+                <!-- City Name -->
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      </svg>
+                    </div>
+                    <span class="text-sm text-gray-900 line-clamp-1 max-w-32">
+                      {{ safari.city.cityName }}
+                    </span>
+                  </div>
+                </td>
+
+                <!-- Category -->
+          <td class="px-6 py-4">
+  <span
+    class="block truncate w-24 px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 text-center"
+  >
+    {{ safari.category }}
   </span>
+</td>
 
-  <!-- Pagination Buttons -->
-  <div class="inline-flex mt-2 xs:mt-0">
-    <button
-      class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l"
-      [disabled]="currentPage === 1"
-      (click)="prevPage()"
-    >
-      Prev
-    </button>
-    <button
-      class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r"
-      [disabled]="currentPage === totalPages"
-      (click)="nextPage()"
-    >
-      Next
-    </button>
-  </div>
-</div>
+                <!-- Adult Price -->
+                <td class="px-6 py-4">
+                  <p class="text-sm font-semibold text-gray-900">
+                    ${{ safari.adultbaseprice }}
+                  </p>
+                </td>
 
+                <!-- Child Price -->
+                <td class="px-6 py-4">
+                  <p class="text-sm font-semibold text-gray-900">
+                    ${{ safari.childbaseprice }}
+                  </p>
+                </td>
+
+                <!-- Discount Percentage -->
+                <td class="px-6 py-4">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                    {{ safari.discountpercentage }}%
+                  </span>
+                </td>
+
+                <!-- Discounted Total Price -->
+                <td class="px-6 py-4">
+                  <p class="text-sm font-semibold text-green-600">
+                    ${{ safari.discountedtotalprice }}
+                  </p>
+                </td>
+
+                <!-- Transport Service -->
+               <td class="px-6 py-4">
+  <span
+    class="block truncate w-28 px-3 py-1 rounded-full text-xs font-medium text-center overflow-hidden"
+  >
+    {{ safari.transportService }}
+  </span>
+</td>
+
+
+                <!-- Tour Service -->
+                <td class="px-6 py-4">
+                  <p class="text-sm text-gray-900">
+                    {{ safari.tourservice }}
+                  </p>
+                </td>
+
+                <!-- Languages -->
+            <td class="px-6 py-4">
+  <span
+    class="block truncate w-28 px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 text-center overflow-hidden"
+    title="{{ safari.translatelanguages }}"
+  >
+    {{ safari.translatelanguages }}
+  </span>
+</td>
+
+
+                <!-- Private Status -->
+                <td class="px-6 py-4">
+                  <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold"
+                    [class]="safari.Isprivate ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'"
+                  >
+                    {{ safari.Isprivate ? 'Private' : 'Public' }}
+                  </span>
+                </td>
+
+                <!-- Edit Button -->
+                <td class="px-6 py-4">
+                  <a 
+                    [routerLink]="['/admin/edit-product', safari._id]"
+                    class="inline-flex items-center justify-center w-10 h-10 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-colors duration-200 group"
+                    title="Edit"
+                  >
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                  </a>
+                </td>
+
+                <!-- Delete Button -->
+                <td class="px-6 py-4">
+                  <button
+                    (click)="deleteProduct(safari._id)"
+                    class="inline-flex items-center justify-center w-10 h-10 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg transition-colors duration-200 group"
+                    title="Delete"
+                  >
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between">
+          <span class="text-sm text-gray-700 mb-4 sm:mb-0">
+            Showing
+            <span class="font-semibold">{{ (currentPage - 1) * pageSize + 1 }}</span>
+            to
+            <span class="font-semibold">{{ getEndIndex() }}</span>
+            of
+            <span class="font-semibold">{{ filterproduct.length }}</span>
+            Entries
+          </span>
+          <div class="flex items-center gap-2">
+            <button
+              class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              [disabled]="currentPage === 1"
+              (click)="prevPage()"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              Previous
+            </button>
+            <button
+              class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              [disabled]="currentPage === totalPages"
+              (click)="nextPage()"
+            >
+              Next
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 </body>
