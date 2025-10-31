@@ -12,7 +12,8 @@ import { RouterLink } from '@angular/router';
 })
 export class City implements OnInit {
   citiesdata: User[] = [];
-
+  visiblecity: User[] = [];
+  itemshow = 8;
   ngOnInit(): void {
     this.city();
   }
@@ -22,7 +23,13 @@ export class City implements OnInit {
   city() {
     this.dep.cities().subscribe((res: tourismResponse) => {
       this.citiesdata = res.tourism;
+      this.visiblecity = this.citiesdata.slice(0, this.itemshow);
       console.log(this.citiesdata);
     });
+  }
+
+  showmore() {
+    this.itemshow += 4;
+    this.visiblecity=this.citiesdata.slice(0, this.itemshow);
   }
 }

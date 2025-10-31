@@ -15,13 +15,13 @@ import { initFlowbite } from 'flowbite';
 })
 export class CityDetails implements OnInit, AfterViewInit, OnDestroy {
   dep: productResponse[] = [];
+  filterproduct: productResponse[] = [];
+  visibleProducts: productResponse[] = []; // 👈 for "view more" logic
   currentIndexes: number[] = [];
   autoSlideInterval: any;
   uniqueCategories: { category: string; count: number }[] = [];
-
   searchitme: string = 'All';
-
-  filterproduct: productResponse[] = [];
+  itemsToShow = 6; // 👈 how many to show initially
 
   constructor(private active: ActivatedRoute, private service: Tourism) {}
 
@@ -45,24 +45,34 @@ export class CityDetails implements OnInit, AfterViewInit, OnDestroy {
     this.service.singlecity(cityName).subscribe((res: tourismdata) => {
       this.dep = res.tourism.city;
       this.filterproduct = this.dep;
+      this.visibleProducts = this.filterproduct.slice(0, this.itemsToShow); // 👈 show limited
       this.currentIndexes = this.dep.map(() => 0);
       this.calculateUniqueCategories();
     });
   }
 
-filterproductdata() {
-  const matchcategory = this.searchitme;
+  filterproductdata() {
+    const matchcategory = this.searchitme;
 
-  if (matchcategory === 'All') {
-    this.filterproduct = this.dep;
-  } else {
-    this.filterproduct = this.dep.filter(
-      (product) =>
-        product.category.toLowerCase() === matchcategory.toLowerCase()
-    );
+    if (matchcategory === 'All') {
+      this.filterproduct = this.dep;
+    } else {
+      this.filterproduct = this.dep.filter(
+        (product) =>
+          product.category.toLowerCase() === matchcategory.toLowerCase()
+      );
+    }
+
+    // reset visible items when filtering
+    this.itemsToShow = 4;
+    this.visibleProducts = this.filterproduct.slice(0, this.itemsToShow);
   }
-}
 
+  // 👇 Show more products each click
+  viewMore() {
+    this.itemsToShow += 4;
+    this.visibleProducts = this.filterproduct.slice(0, this.itemsToShow);
+  }
 
   calculateUniqueCategories(): void {
     const categoryCount: { [key: string]: number } = {};
@@ -77,9 +87,9 @@ filterproductdata() {
     }));
   }
 
-  // Image slider controls
   nextSlide(productIndex: number, length: number): void {
-    this.currentIndexes[productIndex] = (this.currentIndexes[productIndex] + 1) % length;
+    this.currentIndexes[productIndex] =
+      (this.currentIndexes[productIndex] + 1) % length;
   }
 
   ngAfterViewInit(): void {

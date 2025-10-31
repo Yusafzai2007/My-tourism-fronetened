@@ -13,7 +13,7 @@
 <div class="max-w-screen-2xl mx-auto p-5 sm:p-10 md:p-16">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
     <!-- CARD 1 -->
-    <div class="rounded overflow-hidden shadow-lg flex flex-col" *ngFor="let city of orders">
+    <div class="rounded overflow-hidden shadow-lg flex flex-col" *ngFor="let city of visibleproduct">
       <a href="#"></a>
       <div class="relative">
         <a href="#">
@@ -43,7 +43,7 @@
           {{ city.productdescription }}
         </p>
       </div>
-      <div class="flex items-center justify-around ">
+      <div class="flex items-center justify-around">
         <div class="flex items-center space-x-2">
           <div class="flex items-center text-amber-500">
             <h1>Tour Tourism</h1>
@@ -68,4 +68,13 @@
       </a>
     </div>
   </div>
+  <div class="text-center mt-8" *ngIf="visibleproduct.length < orders.length">
+    <button
+      (click)="viewmore()"
+      class="px-6 py-3 bg-gradient-to-r from-green-600 to-blue-700 hover:from-green-700 hover:to-blue-800 text-white rounded-lg shadow-md transition-all duration-300 hover:scale-105"
+    >
+      View More
+    </button>
+  </div>
+
 </div>

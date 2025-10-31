@@ -8,93 +8,76 @@ import { Booking } from '../Interface/booking';
 import { TourismResponsePayment } from '../Interface/payment';
 import { paymentAPI } from '../Interface/payment-api';
 import { TourismApiResponse } from '../Interface/order';
+
 @Injectable({
   providedIn: 'root',
 })
 export class Tourism {
+  private baseUrl = 'https://tourism-64dj3f2i3-yusafzai2007s-projects.vercel.app/api/v1/tourism';
+
   constructor(private http: HttpClient) {}
 
   signup(signup: signupdata) {
-    return this.http.post('http://localhost:4000/api/v1/tourism/signup', signup);
+    return this.http.post(`${this.baseUrl}/signup`, signup);
   }
 
   login(login: logindata) {
-    return this.http.post('http://localhost:4000/api/v1/tourism/login', login, {
-      withCredentials: true,
-    });
+    return this.http.post(`${this.baseUrl}/login`, login, { withCredentials: true });
   }
+
   cities() {
-    return this.http.get<tourismResponse>('http://localhost:4000/api/v1/tourism/get-city');
+    return this.http.get<tourismResponse>(`${this.baseUrl}/get-city`);
   }
 
-  singlecity(cityName: String) {
-    return this.http.get<tourismdata>(
-      `http://localhost:4000/api/v1/tourism/single-citydata/${cityName}`
-    );
+  singlecity(cityName: string) {
+    return this.http.get<tourismdata>(`${this.baseUrl}/single-citydata/${cityName}`);
   }
 
-  singlieProduct(id: String) {
-    return this.http.get<tourismproduct>(
-      `http://localhost:4000/api/v1/tourism/get-productsId/${id}`
-    );
+  singlieProduct(id: string) {
+    return this.http.get<tourismproduct>(`${this.baseUrl}/get-productsId/${id}`);
   }
 
   Prducts() {
-    return this.http.get<tourismproduct>('http://localhost:4000/api/v1/tourism/get-products');
+    return this.http.get<tourismproduct>(`${this.baseUrl}/get-products`);
   }
 
   booking(bookingdata: Booking) {
-    return this.http.post('http://localhost:4000/api/v1/tourism/booking', bookingdata, {
-      withCredentials: true,
-    });
+    return this.http.post(`${this.baseUrl}/booking`, bookingdata, { withCredentials: true });
   }
 
   bookingfetch() {
-    return this.http.get<TourismResponsePayment>(
-      'http://localhost:4000/api/v1/tourism/single-user-booking',
-      {
-        withCredentials: true,
-      }
-    );
+    return this.http.get<TourismResponsePayment>(`${this.baseUrl}/single-user-booking`, {
+      withCredentials: true,
+    });
   }
 
   deletebooking(bookingId: string, cartItemId: string) {
     return this.http.delete<TourismResponsePayment>(
-      `http://localhost:4000/api/v1/tourism/booking/${bookingId}/cart/${cartItemId}`
+      `${this.baseUrl}/booking/${bookingId}/cart/${cartItemId}`
     );
   }
 
   payment(payment: paymentAPI) {
-    return this.http.post('http://localhost:4000/api/v1/tourism/payment', payment, {
-      withCredentials: true,
-    });
+    return this.http.post(`${this.baseUrl}/payment`, payment, { withCredentials: true });
   }
 
   getusers() {
-    return this.http.get<signupdata>('http://localhost:4000/api/v1/tourism/user');
+    return this.http.get<signupdata>(`${this.baseUrl}/user`);
   }
 
   getallorders() {
-    return this.http.get<TourismApiResponse>('http://localhost:4000/api/v1/tourism/get-allorders');
+    return this.http.get<TourismApiResponse>(`${this.baseUrl}/get-allorders`);
   }
 
   logout() {
-    return this.http.post(
-      'http://localhost:4000/api/v1/tourism/logout',
-      {},
-      {
-        withCredentials: true,
-      }
-    );
+    return this.http.post(`${this.baseUrl}/logout`, {}, { withCredentials: true });
   }
 
   allproducts() {
-    return this.http.get<tourismproduct>('http://localhost:4000/api/v1/tourism/get-products');
+    return this.http.get<tourismproduct>(`${this.baseUrl}/get-products`);
   }
 
   paymentget() {
-    return this.http.get('http://localhost:4000/api/v1/tourism/get-allorders', {
-      withCredentials: true,
-    });
+    return this.http.get(`${this.baseUrl}/get-allorders`, { withCredentials: true });
   }
 }

@@ -11,75 +11,71 @@ import { UserResponse } from '../../Interface/add-admin';
   providedIn: 'root',
 })
 export class Admin {
+  private baseUrl = 'https://tourism-64dj3f2i3-yusafzai2007s-projects.vercel.app/api/v1/tourism';
+
   constructor(private http: HttpClient) {}
 
   orders() {
-    return this.http.get<ApiResponse>('http://localhost:4000/api/v1/tourism/get-allorders');
+    return this.http.get<ApiResponse>(`${this.baseUrl}/get-allorders`);
   }
 
   order_details(id: string) {
-    return this.http.get<ApiResponse>(
-      `http://localhost:4000/api/v1/tourism/get-single-payment/${id}`
-    );
+    return this.http.get<ApiResponse>(`${this.baseUrl}/get-single-payment/${id}`);
   }
 
   deletepaymentdata(id: string) {
-    return this.http.delete(`http://localhost:4000/api/v1/tourism/payment-delete/${id}`);
+    return this.http.delete(`${this.baseUrl}/payment-delete/${id}`);
   }
 
   editpayment(id: string, updatedData: any) {
-    return this.http.put(`http://localhost:4000/api/v1/tourism/update-booking/${id}`, updatedData);
+    return this.http.put(`${this.baseUrl}/update-booking/${id}`, updatedData);
   }
 
   allCities() {
-    return this.http.get<tourismResponse>('http://localhost:4000/api/v1/tourism/get-city');
+    return this.http.get<tourismResponse>(`${this.baseUrl}/get-city`);
   }
 
   addcities(formdata: FormData) {
-    return this.http.post('http://localhost:4000/api/v1/tourism/city', formdata);
+    return this.http.post(`${this.baseUrl}/city`, formdata);
   }
 
   editcities(id: string, data: FormData) {
-    return this.http.put(`http://localhost:4000/api/v1/tourism/update-city/${id}`, data);
+    return this.http.put(`${this.baseUrl}/update-city/${id}`, data);
   }
 
   getallusers() {
-    return this.http.get<deleteuser>('http://localhost:4000/api/v1/tourism/user');
+    return this.http.get<deleteuser>(`${this.baseUrl}/user`);
   }
 
   deleteuser(id: string) {
-    return this.http.delete(`http://localhost:4000/api/v1/tourism/deletUser/${id}`);
+    return this.http.delete(`${this.baseUrl}/deletUser/${id}`);
   }
 
   add_products() {
-    return this.http.get<tourismproduct>('http://localhost:4000/api/v1/tourism/get-products');
+    return this.http.get<tourismproduct>(`${this.baseUrl}/get-products`);
   }
 
   Add_products(formdata: FormData) {
-    return this.http.post('http://localhost:4000/api/v1/tourism/product', formdata);
+    return this.http.post(`${this.baseUrl}/product`, formdata);
   }
 
   delete_product(id: string) {
-    return this.http.delete(`http://localhost:4000/api/v1/tourism/delete-products/${id}`);
+    return this.http.delete(`${this.baseUrl}/delete-products/${id}`);
   }
 
   update_product(id: string, updatedata: tourismproduct) {
-    return this.http.put(`http://localhost:4000/api/v1/tourism/update-product/${id}`, updatedata);
+    return this.http.put(`${this.baseUrl}/update-product/${id}`, updatedata);
   }
 
   Admin(admin: signupdata) {
-    return this.http.post('http://localhost:4000/api/v1/tourism/add_Admin', admin);
+    return this.http.post(`${this.baseUrl}/add_Admin`, admin);
   }
 
   current_user() {
-    return this.http.get<singindata>('http://localhost:4000/api/v1/tourism/currentuser');
+    return this.http.get<singindata>(`${this.baseUrl}/currentuser`);
   }
 
-search_product(query: string = "") {
-  return this.http.get<tourismproduct>(
-    `http://localhost:4000/api/v1/tourism/get-products?search=${query}`
-  );
-}
-
-
+  search_product(query: string = "") {
+    return this.http.get<tourismproduct>(`${this.baseUrl}/get-products?search=${query}`);
+  }
 }
