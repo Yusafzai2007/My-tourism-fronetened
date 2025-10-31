@@ -13,7 +13,7 @@ import { TourismApiResponse } from '../Interface/order';
   providedIn: 'root',
 })
 export class Tourism {
-private baseUrl = 'https://tourism-phyibya04-yusafzai2007s-projects.vercel.app/api/v1/tourism';
+  private baseUrl = 'https://tourism-1g0vf2k6r-yusafzai2007s-projects.vercel.app/api/v1/tourism';
 
   constructor(private http: HttpClient) {}
 
