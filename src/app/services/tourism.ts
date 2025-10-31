@@ -14,7 +14,7 @@ import { TourismApiResponse } from '../Interface/order';
 })
 export class Tourism {
  // ✅ Updated base URL to latest Vercel deployment
-private baseUrl = 'https://tourism-api-phi.vercel.app/api/v1/tourism';
+private baseUrl = 'https://tourism-2lsjik4ac-yusafzai2007s-projects.vercel.app/api/v1/tourism';
 
   constructor(private http: HttpClient) {}
 
