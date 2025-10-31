@@ -78,7 +78,9 @@ private baseUrl = 'https://tourism-2lsjik4ac-yusafzai2007s-projects.vercel.app/a
 
   // ================= Users & Orders =================
   getUsers() {
-    return this.http.get<signupdata>(`${this.baseUrl}/user`);
+    return this.http.get<signupdata>(`${this.baseUrl}/user`,{
+      withCredentials:true
+    });
   }
 
   getAllOrders() {
