@@ -14,13 +14,13 @@ import { TourismApiResponse } from '../Interface/order';
 })
 export class Tourism {
  // ✅ Updated base URL to latest Vercel deployment
-private baseUrl = 'https://tourism-4avhe5enz-yusafzai2007s-projects.vercel.app/api/v1/tourism';
+private baseUrl = 'https://tourism-9u73ocljg-yusafzai2007s-projects.vercel.app/api/v1/tourism';
 
   constructor(private http: HttpClient) {}
 
   // ================= Authentication =================
   signup(signup: signupdata) {
-    return this.http.post(`${this.baseUrl}/signup`, signup, { withCredentials: true });
+    return this.http.post(`${this.baseUrl}/signup`, signup);
   }
 
   login(login: logindata) {
