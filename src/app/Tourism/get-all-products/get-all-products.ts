@@ -21,7 +21,7 @@ export class GetAllProducts implements OnInit {
   }
 
   allProducts() {
-    this.service.allproducts().subscribe((res: tourismproduct) => {
+    this.service.allProducts().subscribe((res: tourismproduct) => {
       this.orders = res.tourism.Product;
       this.visibleproduct=this.orders.slice(0,this.itemshow)
     });

@@ -72,7 +72,7 @@ export class Boxes implements OnInit {
   }
 
   ftechproducts() {
-    this.service.Prducts().subscribe((res: any) => {
+    this.service.allProducts().subscribe((res: any) => {
       this.dep = res.tourism.Product.length;
     });
   }
@@ -84,13 +84,13 @@ export class Boxes implements OnInit {
   }
 
   userdata() {
-    this.service.getusers().subscribe((res: any) => {
+    this.service.allProducts().subscribe((res: any) => {
       this.users = res.tourism.users.length;
     });
   }
 
   orderdata() {
-    this.service.getallorders().subscribe({
+    this.service.getAllOrders().subscribe({
       next: (res: TourismApiResponse) => {
         this.totalOrders = res.tourism.orders.length;
       },
@@ -99,7 +99,7 @@ export class Boxes implements OnInit {
   }
 
   totalprice() {
-    this.service.getallorders().subscribe({
+    this.service.getAllOrders().subscribe({
       next: (res: TourismApiResponse) => {
         const totaldata = res.tourism.orders || [];
         this.totalpricedata = totaldata.reduce((acc, data) => acc + data.total, 0);

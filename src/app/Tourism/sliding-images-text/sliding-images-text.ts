@@ -28,7 +28,7 @@ export class SlidingImagesText implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     const cityName = this.active.snapshot.paramMap.get('id');
     if (cityName) {
-      this.service.singlieProduct(cityName).subscribe((res: tourismproduct) => {
+      this.service.singleProduct(cityName).subscribe((res: tourismproduct) => {
         const product = res.tourism.Product;
 
         // ✅ Ensure dep is always an array

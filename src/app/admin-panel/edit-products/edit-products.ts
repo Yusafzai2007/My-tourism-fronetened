@@ -29,7 +29,7 @@ export class EditProducts implements OnInit {
     console.log('Product ID:', this.productId);
 
     if (this.productId) {
-      this.service.singlieProduct(this.productId).subscribe((res: tourismproduct) => {
+      this.service.singleProduct(this.productId).subscribe((res: tourismproduct) => {
         console.log('Single Product Response:', res.tourism.Product);
 
         // ✅ Ensure data is always an array

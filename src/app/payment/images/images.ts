@@ -28,7 +28,7 @@ export class Images implements OnInit {
   }
 
   deletebooking(bookingId: string, cartItemId: string) {
-    this.service.deletebooking(bookingId, cartItemId).subscribe({
+    this.service.deleteBooking(bookingId, cartItemId).subscribe({
       next: (res) => {
         console.log(res);
 

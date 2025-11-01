@@ -143,7 +143,7 @@ export class Charts implements OnInit {
   ngOnInit(): void {
     Chart.register(...registerables);
 
-    this.service.paymentget().subscribe((data: any) => {
+    this.service.getAllPayments().subscribe((data: any) => {
       this.paymentdata = data.tourism.orders;
       console.log('Payment Data:', this.paymentdata);
 

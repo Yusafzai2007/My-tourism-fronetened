@@ -23,7 +23,7 @@ export class SlidingImages implements OnInit {
   }
   
   productdata(){
-    this.service.Prducts().subscribe((res:tourismproduct)=>{
+    this.service.allProducts().subscribe((res:tourismproduct)=>{
       this.dep=res.tourism.Product;
       console.log(this.dep);
     })
